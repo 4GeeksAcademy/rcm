@@ -1,45 +1,74 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
+
+import IngredientsList from '../component/ingredientsList';
+
+import "../styles/newrecipe.css";
 
 export default function NewRecipe() {
 
-    const [ingredient, setIngredient] = useState(null);
-    const [userInput, setUserInput] = useState("apple");
+    const [ingredients, setIngredients] = useState(null);
+    const [userInput, setUserInput] = useState("");
 
+    // Get the user input
+    const userIpuntHandler = (e) => {
+        setUserInput(e.target.value);
+    };
+
+    const searchIngredientsHandler = (e) => {
+        if (e.key === 'Enter') {
+            console.log(userInput);
+            searchIngredient(userInput);
+        }
+    };
+
+    // Trigger the fetch to search the ingredients
     function searchIngredient() {
-        fetch(`https://api.spoonacular.com/food/ingredients/search?apiKey=8dfeb00eec3741ac9df4189c5d7bfe09&query=${userInput}`, {
-            // method: 'GET',
-            // headers: {
-            //     'X-RapidAPI-Key': '4455ed57b8msh52de2a6f2e613a3p1fac97jsnc0ab1dc04340',
-            //     'X-RapidAPI-Host': 'spoonacular-recipe-food-nutrition-v1.p.rapidapi.com'
-            // }
-        })
-            .then(res => res.json())
+        fetch(`https://api.spoonacular.com/food/ingredients/search?apiKey=d5642d1fd212408ebda361f387f7a4e9&query=${userInput}`)
+            .then(response => response.json())
             .then(data => {
 
-                console.log(userInput);
-                setIngredient(data);
+                setIngredients(data);
                 console.log(data);
 
-                console.log(ingredient);
             })
             .catch((error) => {
                 console.log(error);
             });
     }
 
-    useEffect(() => {
-        searchIngredient();
-    }, []);
+
 
     return (
+        <>
+            <div className='split left'>
+                <section className='leftSide'>
+                    <h1>New Recipe</h1>
+                    <div className='usrInput'>
+                        <input
+                            id="ingredientSearch"
+                            type='text'
+                            placeholder="Ingredient"
+                            value={userInput}
+                            onChange={userIpuntHandler}
+                            onKeyUp={searchIngredientsHandler}
+                        />
+                        <div onClick={searchIngredient}><i className="fa-solid fa-magnifying-glass"></i></div>
+                    </div>
+                </section>
 
-        <div className="ingredient d-flex justify-content-between"
-        // onMouseEnter={() => setShowDelete(true)}
-        // onMouseLeave={() => setShowDelete(false)}
-        >
-            {/* {ingredient} */}
+                <div className='ingredList'>
+                    {ingredients && <IngredientsList ingRes={ingredients} ingSearch={userInput} />}
+                </div>
 
-        </div>
+                <div className='footer'>
+                    <p className='m-0'>4Geeks Academy</p>
+                </div>
+
+            </div>
+
+
+        </>
+
 
     )
 }
