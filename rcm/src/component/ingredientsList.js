@@ -1,18 +1,20 @@
-import React from "react";
+import React, {useContext} from "react";
 import Ingredient from "./ingredient";
+import { RecipeContext } from "../context/recipeContext";
+
 
 import "../styles/ingredientsList.css";
 
-export default function IngredientsList({ ingRes, ingSearch }) {
-
-    const ingredient = ingRes.results;
+export default function IngredientsList() {
+    
+    const { ingredients } = useContext(RecipeContext);
 
     return (
         <main>
 
             <section className="ingredients">
-                {ingRes.results.map((ingredients) => {
-                    return <Ingredient key={ingredients.id} ingred={ingredients}  />;
+                {ingredients.results.map((ingredient) => {
+                    return <Ingredient key={ingredient.id} ingredient={ingredient}  />;
                 })}
             </section>
         </main>

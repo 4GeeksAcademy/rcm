@@ -1,8 +1,8 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 
 import "../styles/ingredient.css";
 
-export default function Ingredient({ ingred }) {
+export default function Ingredient({ingredient}) {
 
     const imageURL = "https://spoonacular.com/cdn/ingredients_100x100/"
     // const [ingredInfo, setIngredInfo] = useState("");
@@ -23,12 +23,12 @@ export default function Ingredient({ ingred }) {
     return (
         <article>
             <section className="img">
-            <img src={imageURL + ingred.image} alt="ingredient" />
+            <img src={imageURL + ingredient.image} alt="ingredient" />
             </section>
             
             <section className="info w-100">
-                <div className="name">{ingred.name}</div>
-                <div className="id">id: {ingred.id}</div>
+                <div className="name">{ingredient.name}</div>
+                <div className="id">id: {ingredient.id}</div>
             </section>
         </article>
 
