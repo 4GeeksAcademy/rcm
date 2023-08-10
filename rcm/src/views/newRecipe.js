@@ -1,13 +1,14 @@
 import React, { useContext, useState } from 'react';
 
 import IngredientsList from '../component/ingredientsList';
+import RecipeList from '../component/recipeList';
 import { RecipeContext } from '../context/recipeContext';
 
 import "../styles/newrecipe.css";
 
 export default function NewRecipe() {
 
-    const { ingredients, setIngredients } = useContext(RecipeContext);
+    const { ingredients, setIngredients, recipeIngredients } = useContext(RecipeContext);
 
     const [userInput, setUserInput] = useState("");
 
@@ -68,7 +69,7 @@ export default function NewRecipe() {
                 </div>
 
                 <div className='split right'>
-
+                    {recipeIngredients && <RecipeList />}
                 </div>
         </>
 
