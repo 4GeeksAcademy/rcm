@@ -4,7 +4,7 @@ export const RecipeContext = createContext();
 
 export default function RecipeContextProvider(props){
 
-    const [ ingredients, setIngredients ] = useState();
+    const [ ingredients, setIngredients ] = useState([]);
     const [ recipeIngredients, setRecipeIngredients ] = useState([]);
 
     return (

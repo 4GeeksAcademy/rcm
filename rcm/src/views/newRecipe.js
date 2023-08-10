@@ -9,7 +9,6 @@ import "../styles/newrecipe.css";
 export default function NewRecipe() {
 
     const { ingredients, setIngredients, recipeIngredients } = useContext(RecipeContext);
-
     const [userInput, setUserInput] = useState("");
 
     // Get the user input
@@ -17,6 +16,7 @@ export default function NewRecipe() {
         setUserInput(e.target.value);
     };
 
+    // Trigger the fetch using the 'Enter' key or using de search button
     const searchIngredientsHandler = (e) => {
         if (e.key === 'Enter') {
             console.log(userInput);
@@ -24,15 +24,13 @@ export default function NewRecipe() {
         }
     };
 
-    // Trigger the fetch to search the ingredients
+    // Fetch for ingredients search
     function searchIngredient() {
         fetch(`https://api.spoonacular.com/food/ingredients/search?apiKey=d5642d1fd212408ebda361f387f7a4e9&query=${userInput}&number=100`)
             .then(response => response.json())
             .then(data => {
-
-                setIngredients(data);
-                console.log(data);
-
+                setIngredients(data.results);
+                console.log(data.results);
             })
             .catch((error) => {
                 console.log(error);
@@ -42,10 +40,13 @@ export default function NewRecipe() {
 
     return (
         <>
-                <div className='split left'>
-                    <section className='leftSide'>
+            <div className='container-fluid'>
+                <div className='row row-col-2 d-flex align-items-start'>
+                    {/* Left Column */}
+                    <section className='col-4 left p-0'>
                         <h1>New Recipe</h1>
-                        <div className='usrInput'>
+                        {/* Ingredients Search Bar + Search Button */}
+                        <div className='usrInput d-flex'>
                             <input
                                 id="ingredientSearch"
                                 type='text'
@@ -56,23 +57,22 @@ export default function NewRecipe() {
                             />
                             <div onClick={searchIngredient}><i className="fa-solid fa-magnifying-glass"></i></div>
                         </div>
+                        {/* Ingredients Found */}
+                        <div className='ingredList'>
+                            ingrediente
+                            {ingredients && <IngredientsList />}
+                        </div>
+                        {/* Footer */}
+                        <div className='footer'>
+                            <p className='m-0'>{ingredients.length} ingredients found</p>
+                        </div>
                     </section>
-
-                    <div className='ingredList'>
-                        {ingredients && <IngredientsList />}
-                    </div>
-
-                    <div className='footer'>
-                        <p className='m-0'>4Geeks Academy</p>
-                    </div>
-
+                    {/* Right Column */}
+                    <section className='col-8 right p-0'>
+                        {recipeIngredients && <RecipeList />}
+                    </section>
                 </div>
-
-                <div className='split right'>
-                    {recipeIngredients && <RecipeList />}
-                </div>
+            </div>
         </>
-
-
     )
 }
