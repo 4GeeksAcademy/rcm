@@ -1,4 +1,5 @@
-import React from "react";
+import React, { useContext } from "react";
+import { RecipeContext } from "../context/recipeContext";
 
 import "../styles/recipe.css";
 
@@ -8,6 +9,10 @@ export default function Recipe({ recipeIngredient }) {
 
     // const isNoIngredient = recipeIngredient === NO_INGREDIENT;
 
+    const { dataLoaded } = useContext(RecipeContext);
+
+    // if (!dataLoaded ) return <p>...loading</p>
+
     return (
         <article>
            
@@ -15,6 +20,8 @@ export default function Recipe({ recipeIngredient }) {
             <div className="lines">
                 <div className="recipeID">id: {recipeIngredient.id}</div>
                 <div className="ingredientName">{recipeIngredient.name}</div>
+                {/* <div className="ingredientName">{recipeIngredient.cost}</div>
+                <div className="ingredientName">{recipeIngredient.costUnit}</div> */}
                 </div>
             </section>
             

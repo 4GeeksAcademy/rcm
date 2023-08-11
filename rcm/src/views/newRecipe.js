@@ -26,7 +26,15 @@ export default function NewRecipe() {
 
     // Fetch for ingredients search
     function searchIngredient() {
-        fetch(`https://api.spoonacular.com/food/ingredients/search?apiKey=d5642d1fd212408ebda361f387f7a4e9&query=${userInput}&number=100`)
+        fetch(`https://api.spoonacular.com/food/ingredients/search?query=${userInput}&number=100`,
+            {
+                method: 'GET',
+                headers: {
+                    "x-api-key":
+                        "d5642d1fd212408ebda361f387f7a4e9"
+                },
+            }
+        )
             .then(response => response.json())
             .then(data => {
                 setIngredients(data.results);
@@ -41,12 +49,12 @@ export default function NewRecipe() {
     return (
         <>
             <div className='container-fluid'>
-                <div className='row row-col-2 d-flex align-items-start'>
+                <div className='row flex-nowrap'>
                     {/* Left Column */}
-                    <section className='col-4 left p-0'>
+                    <section className='col-4 left'>
                         <h1>New Recipe</h1>
                         {/* Ingredients Search Bar + Search Button */}
-                        <div className='usrInput d-flex'>
+                        <div className='usrInput'>
                             <input
                                 id="ingredientSearch"
                                 type='text'
@@ -59,7 +67,6 @@ export default function NewRecipe() {
                         </div>
                         {/* Ingredients Found */}
                         <div className='ingredList'>
-                            ingrediente
                             {ingredients && <IngredientsList />}
                         </div>
                         {/* Footer */}
@@ -68,7 +75,8 @@ export default function NewRecipe() {
                         </div>
                     </section>
                     {/* Right Column */}
-                    <section className='col-8 right p-0'>
+                    <section className='col-8 align-self-center right'>
+                        ingrediente
                         {recipeIngredients && <RecipeList />}
                     </section>
                 </div>
