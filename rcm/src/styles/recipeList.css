@@ -31,7 +31,7 @@ section.recipeCost {
   border-color: lightgray;
 }
 
-section#cost, section#salePrice {
+section#cost, section#salePrice, section#taxValue {
   border: 1px solid lightgray;
   border-radius: 5px;
   padding-left: 20px;
@@ -42,6 +42,7 @@ section#cost, section#salePrice {
 }
 
 section#salePrice{ margin-top: 30px;}
+section#taxValue{ margin-top: 30px;}
 
 span {
   display: flex;
@@ -62,11 +63,19 @@ p {
   padding-right: 5px;
 }
 
+/* labels */
 .cti,
 .mev,
 .ctp,
 .cpp,
-.prv {
+.taxv,
+.pmp,
+.psv,
+.psvt,
+.prv,
+.vdt,
+.mdg,
+.vdd {
   padding: 3px;
   display: flex;
   justify-content: space-between;
@@ -78,7 +87,14 @@ p {
   border-style: solid;
 }
 
-.cpp, .prv {
+/* special labels */
+.pmp, .psv, .psvt{
+  color: rgb(70, 70, 70);
+  border-color: white;
+}
+
+/* totals */
+.cpp, .vdd {
   background-image: linear-gradient(rgb(146, 138, 255), rgb(102, 0, 255));
   color: white;
   border: 0;
@@ -86,10 +102,15 @@ p {
   margin-top: 3px;
 }
 
+/* values */
 #ctiValue,
 #mevValue,
 #ctpValue,
-#ppvValue {
+#ppvValue,
+#prvValue,
+#vdtValue,
+#pmdgValue,
+#mdgValue {
   display: flex;
   justify-content: flex-start;
   border: 1px solid lightgrey;
@@ -102,7 +123,7 @@ p {
   margin-left: 5px;
 }
 
-#cppValue, #prvValue{
+#cppValue, #psvValue, #psvtValue{
   display: flex;
   justify-content: flex-start;
   font-family: 'Montserrat', sans-serif;
@@ -112,12 +133,26 @@ p {
   margin-left: 5px;
 }
 
-#mevInput, #pmpInput {
+#mevInput, #tvInput, #pmpInput {
   display: flex;
   outline: none;
   border: 1px solid lightgrey;
   border-radius: 10px;
   width: 50px;
+  height: 30px;
+  font-size: 16px;
+  color: lightslategray;
+  padding-left: 5px;
+  text-align: center;
+  margin-left: 10px;
+}
+
+#vvdInput{
+  display: flex;
+  outline: none;
+  border: 1px solid lightgrey;
+  border-radius: 10px;
+  width: 100px;
   height: 30px;
   font-size: 16px;
   color: lightslategray;
@@ -163,3 +198,8 @@ color: rgb(102, 0, 255);
 }
 
 .percPMP{display: flex;}
+
+#mdgs, #vdv{
+  display: flex;
+
+}

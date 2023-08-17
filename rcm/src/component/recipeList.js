@@ -81,6 +81,23 @@ export default function RecipeList() {
                         </section>
 
                         {/* TAX VALUE */}
+                        <section id="taxValue">
+                            <div className="row">
+                                <i id="gqm" class="fa-solid fa-circle-info"></i>
+                                <div className="col-2 taxv">
+                                    {/* LABEL */}
+                                    <span>TAX</span>
+                                    <div className="percPMP">
+                                        {/* % MATERIA PRIMA */}
+                                        <input id="tvInput"
+                                            type='number'
+                                            defaultValue={88} />
+                                        {/* % */}
+                                        <p>%</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </section>
 
                         {/* SUGGESTED RETAIL PRICE */}
                         <section id="suggestedPrice">
@@ -101,62 +118,77 @@ export default function RecipeList() {
                             </div>
 
                             <div className="row">
-                                {/* COSTO POR PORCION */}
-                                <div className="col-2 prv">
+                                {/* PRECIO SUGERIDO */}
+                                <div className="col-2 psv">
                                     {/* LABEL */}
                                     <span>SUGGESTED SALES PRICE</span>
                                     {/* VALOR */}
-                                    <div id="prvValue">$ 1234.56</div>
+                                    <div id="psvValue">$ 1234.56</div>
+                                </div>
+                            </div>
+
+                            <div className="row">
+                                {/* PRECIO SUGERIDO + TAX*/}
+                                <div className="col-2 psvt">
+                                    {/* LABEL */}
+                                    <span>SUGGESTED SALES PRICE + TAX</span>
+                                    {/* VALOR */}
+                                    <div id="psvtValue">$ 1234.56</div>
                                 </div>
                             </div>
                         </section>
 
-                        {/* PRECIO DE VENTA */}
+
+                        {/* PRECIO REAL DE VENTA */}
                         <section id="salePrice">
                             <div className="row">
                                 <i id="gqm" class="fa-solid fa-circle-info"></i>
-                                {/* COSTO TOTAL DE INGREDIENTES */}
-                                <div className="col-2 cti">
+                                {/* PRECIO REAL DE VENTA */}
+                                <div className="col-2 prv">
                                     {/* LABEL */}
-                                    <span>INGREDIENTS TOTAL COST</span>
+                                    <span>REAL SALE PRICE</span>
                                     {/* VALOR */}
-                                    <div id="ctiValue">$ 1234.56</div>
+                                    <div id="prvValue">$ 1234.56</div>
                                 </div>
                             </div>
 
                             <div className="row">
-                                {/* MARGEN DE ERROR Y VARIAION */}
-                                <div className="col-3 mev">
+                                {/* VALOR DEL IMPUESTO */}
+                                <div className="col-3 vdt">
                                     {/* LABEL */}
-                                    <span>ERROR MARGIN AND VARIATION</span>
-                                    {/* PORCENTAJE ESTABLECIDO POR EL USUARIO */}
-                                    <input id="mevInput"
-                                        type='number'
-                                        defaultValue={88} />
-                                    {/* % */}
-                                    <p>%</p>
+                                    <span>TAX VALUE</span>
                                     {/* VALOR */}
-                                    <div id="mevValue">$ 1234.56</div>
+                                    <div id="vdtValue">$ 1234.56</div>
                                 </div>
                             </div>
 
                             <div className="row">
-                                {/* COSTO TOTAL DE LA PREPARACION */}
-                                <div className="col-2 ctp">
+                                {/* MARGEN DE GANANCIA */}
+                                <div className="col-2 mdg">
                                     {/* LABEL */}
-                                    <span>PREPARATION TOTAL COST</span>
-                                    {/* VALOR */}
-                                    < div id="ctpValue">$ 1234.56</div>
+                                    <span>PROFIT</span>
+                                    {/* % & VALOR */}
+                                    <div id="mdgs">
+                                        <div id="pmdgValue">150 %</div>
+                                        <div id="mdgValue">$ 1234.56</div>
+                                    </div>
+
                                 </div>
                             </div>
 
                             <div className="row">
-                                {/* COSTO POR PORCION */}
-                                <div className="col-2 cpp">
+                                {/* VALOR DE VENTA */}
+                                <div className="col-2 vdd">
                                     {/* LABEL */}
-                                    <span>PORTION COST</span>
-                                    {/* VALOR */}
-                                    <div id="cppValue">$ 1234.56</div>
+                                    <span>SALE VALUE</span>
+                                    {/* % MATERIA PRIMA */}
+                                    <div id="vdv">
+                                    <p>$</p>
+                                        <input id="vvdInput"
+                                            type='number'
+                                            defaultValue={1234.56} />
+                                    </div>
+
                                 </div>
                             </div>
                         </section>
