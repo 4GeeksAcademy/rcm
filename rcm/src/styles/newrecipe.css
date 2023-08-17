@@ -37,7 +37,7 @@ h1 {
     padding: 20px;
 }
 
-input {
+#ingredientSearch {
     outline: none;
     border: 1px solid lightgrey;
     border-radius: 10px;

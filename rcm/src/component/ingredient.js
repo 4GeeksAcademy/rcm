@@ -8,27 +8,9 @@ export default function Ingredient({ ingredient }) {
     const { ingredients,
         setIngredients,
         recipeIngredients,
-        setRecipeIngredients,
-        setDataLoaded } = useContext(RecipeContext);
- 
-
+        setRecipeIngredients } = useContext(RecipeContext);
 
     const imageURL = "https://spoonacular.com/cdn/ingredients_100x100/"
-
-    // const [ingredInfo, setIngredInfo] = useState("");
-
-    // useEffect(() => {
-    //     fetch(`https://api.spoonacular.com/food/ingredients/${ingred.id}/information?apiKey=d5642d1fd212408ebda361f387f7a4e9&amount=1`
-    //     )
-    //         .then((resp) => resp.json())
-    //         .then((data) => {
-    //             console.log(data)
-    //             setIngredInfo(data);
-    //         })
-    //         .catch(() => {
-    //             console.log("error getting ingredient info");
-    //         })
-    // }, [ingred.id])
 
     async function searchIngredientInfo(id) {
         const response = await fetch(
@@ -41,46 +23,33 @@ export default function Ingredient({ ingredient }) {
                 },
             }
         );
-
         const data = await response.json();
 
-        setRecipeIngredients(data);
-        console.log(data);
-        setDataLoaded(true);
-        
+        return data
     }
 
-    const addIngredientToRecipe = () => {
 
-        // searchIngredientInfo(ingredient.id);
+    const addIngredientToRecipe = async () => {
+        try {
 
-        // var ri = {};
+            const info = await searchIngredientInfo(ingredient.id);
+            console.log(info);
 
-        // setTimeout(() => {
-        //     ri = {
-        //         id: recipeIngredients.id,
-        //         name: recipeIngredients.name,
-        //         // costUnit: recipeIngredients.estimatedCost.unit,
-        //         // cost: recipeIngredients.estimatedCost.value,
-                
-        //     }
-        //     console.log (ri);
-        // }, 2000);
-        
-        const ri = {
-            id: ingredient.id,
-            name: ingredient.name,
-            // costUnit: recipeIngredients.estimatedCost.unit,
-            // cost: recipeIngredients.estimatedCost.value,
-            
+            const ri = {
+                id: ingredient.id,
+                image: info.image,
+                name: ingredient.name,
+                amount: 1,
+                units: ["gr","ml"],
+                cost: info.estimatedCost.value,
+                costUnit: info.estimatedCost.unit,
+            }
+            setRecipeIngredients([...recipeIngredients, ri])
+            setIngredients(ingredients.filter((ingred) => ingredient.id !== ingred.id))
+            console.log(ri);
         }
-        // setRecipeIngredients([...recipeIngredients, recipeIngredient])
-        // setIngredients({ results: ingredients.results.filter((ingred) => ingredient.id !== ingred.id) })
-
-        setRecipeIngredients([...recipeIngredients, ri])
-        setIngredients(ingredients.filter((ingred) => ingredient.id !== ingred.id))
+        catch (e) { }
     }
-
 
 
     return (
@@ -91,7 +60,7 @@ export default function Ingredient({ ingredient }) {
 
             <section className="info w-100">
                 <div className="name">{ingredient.name}</div>
-                <div className="id">id: {ingredient.id}</div>
+                <div className="id">ID: {ingredient.id}</div>
             </section>
         </article>
 

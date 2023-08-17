@@ -76,7 +76,10 @@ export default function NewRecipe() {
                     </section>
                     {/* Right Column */}
                     <section className='col-8 align-self-center right'>
-                        ingrediente
+                        <div className='recipeNewName'>
+                            ingrediente
+                        </div>
+
                         {recipeIngredients && <RecipeList />}
                     </section>
                 </div>
