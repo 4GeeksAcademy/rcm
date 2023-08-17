@@ -6,7 +6,7 @@ section.ingredientInfo{
     border-radius: 2px;
     transition: all .2s ease-in-out;
     font-family: 'Montserrat', sans-serif;
-    width: 600px;
+    width: 800px;
 }
 
 section.ingredientInfo:hover{
@@ -66,4 +66,17 @@ section.ingredientInfo:hover{
     font-size: 10px;
     padding: 5px;
     width: 20px;
+}
+
+.delete{
+    margin: 0;
+    display: flex;
+    align-items: center;
+    color: lightcoral;
+    padding-right: 5px;
+    font-size: 20px;
+}
+
+.delete:hover{
+    cursor: pointer;
 }

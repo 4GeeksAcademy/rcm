@@ -1,8 +1,4 @@
 section.recipeList {
-  /* padding-left: 20px;
-    padding-right: 20px; */
-  /* margin-top: calc(130px + 20px);
-    margin-right: calc(50px + 20px); */
   width: auto;
   height: calc(100vh - 200px);
   overflow-y: auto;
@@ -35,7 +31,7 @@ section.recipeCost {
   border-color: lightgray;
 }
 
-section#cost {
+section#cost, section#salePrice {
   border: 1px solid lightgray;
   border-radius: 5px;
   padding-left: 20px;
@@ -45,9 +41,11 @@ section#cost {
   box-shadow: 1px 0 12px grey;
 }
 
+section#salePrice{ margin-top: 30px;}
+
 span {
   display: flex;
-  justify-content: start;
+  justify-content: flex-start;
   align-items: center;
   font-size: 12px;
   padding-left: 5px;
@@ -67,7 +65,8 @@ p {
 .cti,
 .mev,
 .ctp,
-.cpp {
+.cpp,
+.prv {
   padding: 3px;
   display: flex;
   justify-content: space-between;
@@ -79,15 +78,18 @@ p {
   border-style: solid;
 }
 
-.cpp {
-
+.cpp, .prv {
   background-image: linear-gradient(rgb(146, 138, 255), rgb(102, 0, 255));
   color: white;
+  border: 0;
+  border-radius: 5px;
+  margin-top: 3px;
 }
 
 #ctiValue,
 #mevValue,
-#ctpValue {
+#ctpValue,
+#ppvValue {
   display: flex;
   justify-content: flex-start;
   border: 1px solid lightgrey;
@@ -100,7 +102,7 @@ p {
   margin-left: 5px;
 }
 
-#cppValue{
+#cppValue, #prvValue{
   display: flex;
   justify-content: flex-start;
   font-family: 'Montserrat', sans-serif;
@@ -110,7 +112,7 @@ p {
   margin-left: 5px;
 }
 
-#mevInput {
+#mevInput, #pmpInput {
   display: flex;
   outline: none;
   border: 1px solid lightgrey;
@@ -123,3 +125,41 @@ p {
   text-align: center;
   margin-left: 10px;
 }
+
+section#suggestedPrice {
+  margin-top: 30px;
+  background-color: rgb(186, 181, 255);
+  border: 1px solid white;
+  border-radius: 5px;
+  padding-left: 20px;
+  padding-right: 20px;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  box-shadow: 1px 0 12px grey;
+}
+
+#gqm{
+  display: flex;
+  justify-content: flex-start;
+  padding: 5px;
+  font-size: 15px;
+color: grey;
+}
+
+#qm{
+  display: flex;
+  justify-content: flex-start;
+  padding: 5px;
+  font-size: 15px;
+color: rgb(102, 0, 255);
+}
+
+.pmp {
+  padding: 3px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+}
+
+.percPMP{display: flex;}

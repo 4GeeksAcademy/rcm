@@ -1,17 +1,23 @@
-import React from "react";
+import React, { useState, useContext } from "react";
+import { RecipeContext } from "../context/recipeContext";
 
 import "../styles/recipe.css";
 
-export const NO_INGREDIENT = "No ingredient added yet..."
-
 export default function Recipe({ ingredient }) {
 
-    // const isNoIngredient = recipeIngredient === NO_INGREDIENT;
+    const [showDelete, setShowDelete] = useState(false);
+    const { setRecipeIngredients } = useContext(RecipeContext);
 
+    const removeTask = (key) => {
+        setRecipeIngredients(i => i.filter((ingred) => key !== ingred.id))
+    }
 
     return (
         <article>
-            <section className="ingredientInfo">
+            <section className="ingredientInfo"
+                onMouseEnter={() => setShowDelete(true)}
+                onMouseLeave={() => setShowDelete(false)}
+            >
                 <div className="container">
                     <div className="row">
                         <div className="col-4 info">
@@ -27,21 +33,19 @@ export default function Recipe({ ingredient }) {
                                     <option value={unit}>{unit}</option>))}
                             </select>
                         </div>
-                        <div className="col-4 cost">
+                        <div className="col-3 cost">
                             <input id="ingredientAmount"
                                 type='number'
                                 defaultValue={ingredient.cost} />
                             <span id="costUnit">{ingredient.costUnit}</span>
                         </div>
+                        <div className="col-1 delete">
+                            {showDelete && (<p className='delete' onClick={() => removeTask(ingredient.id)}>X</p>)}
+                        </div>
+
                     </div>
                 </div>
             </section>
-
-            {/* <section className="ingredientProperties">
-                <select className="umDB"></select>
-
-            </section> */}
-
 
         </article>
 

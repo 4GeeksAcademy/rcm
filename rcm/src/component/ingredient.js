@@ -33,7 +33,6 @@ export default function Ingredient({ ingredient }) {
         try {
 
             const info = await searchIngredientInfo(ingredient.id);
-            console.log(info);
 
             const ri = {
                 id: ingredient.id,
@@ -46,7 +45,6 @@ export default function Ingredient({ ingredient }) {
             }
             setRecipeIngredients([...recipeIngredients, ri])
             setIngredients(ingredients.filter((ingred) => ingredient.id !== ingred.id))
-            console.log(ri);
         }
         catch (e) { }
     }

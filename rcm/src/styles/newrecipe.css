@@ -50,7 +50,7 @@ h1 {
 
 ::placeholder { color: rgb(190, 200, 209); }
 
-i {
+#searchICO {
     text-align: center;
     width: 100%;
     height: 100%;
@@ -63,5 +63,27 @@ i {
     margin-left: 5px;
     box-shadow: 2px 2px 5px rgb(122, 122, 122);
 }
+i:hover{ cursor: pointer; }
 
 .ingredList { padding: 20px; }
+
+.recipeNewName{
+    padding-left: 12px;
+}
+
+#recipeName{
+    display: flex;
+    justify-content: flex-start;
+    outline: none;
+    border: 1px solid lightgrey;
+    border-radius: 10px;
+    width: 800px;
+    font-size: 25px;
+    color: lightslategray;
+    text-align: center;
+    margin-bottom: 30px;
+    padding-left: 30px;
+    padding-right: 30px;
+    box-shadow: 2px 2px 5px rgb(122, 122, 122);
+}
+::placeholder { color: rgb(190, 200, 209); }

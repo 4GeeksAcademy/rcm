@@ -63,7 +63,7 @@ export default function NewRecipe() {
                                 onChange={userIpuntHandler}
                                 onKeyUp={searchIngredientsHandler}
                             />
-                            <div onClick={searchIngredient}><i className="fa-solid fa-magnifying-glass"></i></div>
+                            <div onClick={searchIngredient}><i id='searchICO' className="fa-solid fa-magnifying-glass"></i></div>
                         </div>
                         {/* Ingredients Found */}
                         <div className='ingredList'>
@@ -77,9 +77,12 @@ export default function NewRecipe() {
                     {/* Right Column */}
                     <section className='col-8 align-self-center right'>
                         <div className='recipeNewName'>
-                            ingrediente
+                            <input
+                                id="recipeName"
+                                type='text'
+                                placeholder="Recipe name"
+                            />
                         </div>
-
                         {recipeIngredients && <RecipeList />}
                     </section>
                 </div>

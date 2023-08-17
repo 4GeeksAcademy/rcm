@@ -12,6 +12,7 @@ article.ingredientFound {
 article.ingredientFound:hover {
     transform: scale(1.08);
     background-color: rgb(240, 240, 240);
+    cursor: pointer;
 }
 
 img {
