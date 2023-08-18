@@ -199,7 +199,10 @@ color: rgb(102, 0, 255);
 
 .percPMP{display: flex;}
 
-#mdgs, #vdv{
-  display: flex;
+#mdgs, #vdv{ display: flex; }
 
+.options{
+  padding: 30px;
+  display: flex;
+  justify-content: space-between;
 }

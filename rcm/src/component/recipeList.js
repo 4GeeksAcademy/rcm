@@ -183,15 +183,19 @@ export default function RecipeList() {
                                     <span>SALE VALUE</span>
                                     {/* % MATERIA PRIMA */}
                                     <div id="vdv">
-                                    <p>$</p>
+                                        <p>$</p>
                                         <input id="vvdInput"
                                             type='number'
                                             defaultValue={1234.56} />
                                     </div>
-
                                 </div>
                             </div>
                         </section>
+                        <div className="options">
+                            <button type="button" className="btn m-2 btn-secondary">Calcular</button>
+                            <button type="button" className="btn m-2 btn-success">Guardar</button>
+
+                        </div>
 
                     </div>
                 </section >
